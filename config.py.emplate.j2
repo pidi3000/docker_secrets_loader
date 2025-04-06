@@ -1,0 +1,62 @@
+####################################################################################################
+# File writer config
+####################################################################################################
+
+OUTPUT_FILE_SECRETS = "{{ OUTPUT_FILE_SECRETS | default('secrets.txt') }}"
+OUTPUT_FILE_SYSTEM = "{{ OUTPUT_FILE_SYSTEM | default('secrets_system.txt') }}"
+OUTPUT_FILE_TEMPLATE = {{ OUTPUT_FILE_TEMPLATE | default(['secrets_template.txt']) }}
+
+####################################################################################################
+# Password Manager Vars
+####################################################################################################
+PM_NAME = "{{ PM_NAME | default('1password') }}"
+"""
+Name of the Password manager handler to use
+"""
+
+PM_ACCESS_TOKEN_FILE = "{{ PM_ACCESS_TOKEN_FILE | default('.pm_access_token') }}"
+"""
+Path to the file containing the an access token used by the handler to connect to the Password manager
+for example the Service account token for 1Password
+"""
+
+# ! SET A VALUE HERE <----------------------------------------------------------------------------------------------------
+PM_VAULT_NAME = "{{ PM_VAULT_NAME }}"
+"""
+Name of the Vault containing all the secrets
+"""
+
+PM_SECRETS_SECTION_NAME = "{{ PM_SECRETS_SECTION_NAME | default('ENV VARS') }}"
+"""
+Name of the section where the secrets are saved in the Password Manager
+"""
+
+##################################################
+# Slug config
+##################################################
+PM_WRITE_SLUGS = {{ PM_WRITE_SLUGS | default(False) }}
+"""
+write slugs to the password manger
+"""
+
+PM_WRITE_SLUGS_DRYRUN = {{ PM_WRITE_SLUGS_DRYRUN | default(False) }}
+"""
+don't actually write slugs to the password manger, for testing
+"""
+
+PM_WRITE_SLUGS_FORCE = {{ PM_WRITE_SLUGS_FORCE | default(False) }}
+"""
+force overwriting slugs even if they are the same
+"""
+
+# ! SET A VALUE HERE <----------------------------------------------------------------------------------------------------
+GLOBAL_SLUG_PREFIX = "{{ GLOBAL_SLUG_PREFIX}}"
+"""
+All slugs are prefixed with this value
+to avoid potential naming conflicts
+"""
+
+PM_SLUG_SECTION_NAME = "{{ PM_SLUG_SECTION_NAME | default('ENV VAR SLUGS (Auto created)') }}"
+"""
+Name of the section where the Slugs are saved in the Password Manager
+"""
