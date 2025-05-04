@@ -92,7 +92,7 @@ class Password_Manager_handler_base:
             # if access_token_file is not None:
             if Path(access_token_file).exists():
                 with open(access_token_file, "r") as tf:
-                    _access_token = tf.read()
+                    _access_token = tf.read().strip()
 
                 return _access_token
 

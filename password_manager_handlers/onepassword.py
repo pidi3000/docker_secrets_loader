@@ -42,12 +42,11 @@ class onepassword_handler(Password_Manager_handler_base):
                 integration_version="v1.0.0"
             )
         )
-        
 
     def _get_secrets_vault(self) -> VaultOverview:
         async def _temp():
-            vaults = await self._client.vaults.list_all()
-            async for vault in vaults:
+            vaults = await self._client.vaults.list()
+            for vault in vaults:
                 # print(vault.title)
                 if vault.title.upper() == config.PM_VAULT_NAME.upper():
                     return vault
@@ -65,9 +64,9 @@ class onepassword_handler(Password_Manager_handler_base):
 
     def _get_items_in_vault(self, vault: VaultOverview):
         async def _temp(vault: VaultOverview):
-            items = await self._client.items.list_all(vault.id)
+            items = await self._client.items.list(vault.id)
             _items: list[ItemOverview] = []
-            async for item in items:
+            for item in items:
                 # ! excluded conditions
                 if not item.title.startswith("_") or "template".upper() not in item.title.upper():
                     # self._normalize_entrie_data(item)
@@ -334,7 +333,7 @@ class onepassword_handler(Password_Manager_handler_base):
             service_name=item.title,
             service_prefix=service_prefix
         )
-        
+
         pm_entry.pm_fileds = all_item_fields
         pm_entry.pm_vault_id = item.vault_id
 
