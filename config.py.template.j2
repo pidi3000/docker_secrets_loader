@@ -2,9 +2,9 @@
 # File writer config
 ####################################################################################################
 
-OUTPUT_FILE_SECRETS = "{{ OUTPUT_FILE_SECRETS | default('secrets.txt') }}"
-OUTPUT_FILE_SYSTEM = "{{ OUTPUT_FILE_SYSTEM | default('secrets_system.txt') }}"
-OUTPUT_FILE_TEMPLATE = {{ OUTPUT_FILE_TEMPLATE | default(['secrets_template.txt']) }}
+OUTPUT_FILE_SECRETS = "{{ script_config_vars.OUTPUT_FILE_SECRETS | default('secrets.txt') }}"
+OUTPUT_FILE_SYSTEM = "{{ script_config_vars.OUTPUT_FILE_SYSTEM | default('secrets_system.txt') }}"
+OUTPUT_FILE_TEMPLATE = {{ script_config_vars.OUTPUT_FILE_TEMPLATE | default(['secrets_template.txt']) }}
 
 ####################################################################################################
 # Password Manager Vars
