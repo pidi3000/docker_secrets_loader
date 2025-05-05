@@ -5,6 +5,9 @@
 set -e  # Exit on any error
 set -u  # Treat unset variables as an error
 
+# Change to the directory where this script is located
+cd "$(dirname "$0")"
+
 # Define the virtual environment directory
 VENV_DIR=".venv"
 
