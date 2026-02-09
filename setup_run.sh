@@ -13,7 +13,7 @@ VENV_DIR=".venv"
 
 # Create the virtual environment if it doesn't exist
 if [ ! -d "$VENV_DIR" ]; then
-  echo "Creating virtual environment..."
+  echo "--> Creating virtual environment..."
   python3 -m venv "$VENV_DIR"
 fi
 
@@ -21,7 +21,8 @@ fi
 source "$VENV_DIR/bin/activate"
 
 # Upgrade pip and install requirements
-echo "Installing dependencies..."
+echo ""
+echo "--> Installing dependencies..."
 pip install --upgrade pip
 if [ -f "requirements.txt" ]; then
   pip install -r requirements.txt
@@ -30,5 +31,6 @@ else
 fi
 
 # Run the Python script
-echo "Running main.py..."
-python main.py
+echo ""
+echo "--> Running main.py..."
+python3 main.py
